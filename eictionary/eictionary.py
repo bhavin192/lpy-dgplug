@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 
 def get_meaning(word):
     """Takes word and find all meanings of it and returns the list of all meanings
@@ -18,5 +19,8 @@ def get_meaning(word):
 
 
 if __name__ == "__main__":
-    for meaning in get_meaning("Good"):
-        print(meaning)
+    if len(sys.argv) != 2:
+        print("Please specify a word to find the meaning. \nUsage:\n $ python3 eictionary.py word") 
+    else:
+        for meaning in get_meaning(sys.argv[1]):
+            print(meaning)
