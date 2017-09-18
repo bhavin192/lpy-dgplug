@@ -16,8 +16,16 @@ def get_meaning(word):
                 list_of_meanings.append(split_line[2])
     return list_of_meanings
 
+def get_list_of_words():
+    """Gives list of words from the dictionary source file
+    :returns: list of all words from the file"""
 
-
+    list_of_words = []
+    with open("dictionary.csv") as wordfile:
+        for line in wordfile:
+            list_of_words = line.split(",")[0].strip('"')
+    return list_of_words        
+        
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Please specify a word to find the meaning. \nUsage:\n $ python3 eictionary.py word") 
