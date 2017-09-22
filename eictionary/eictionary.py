@@ -23,7 +23,7 @@ def get_list_of_words():
     list_of_words = []
     with open("dictionary.csv") as wordfile:
         for line in wordfile:
-            list_of_words = line.split(",")[0].strip('"')
+            list_of_words.append(line.split(",")[0].strip('"'))
     return list_of_words        
         
 if __name__ == "__main__":
