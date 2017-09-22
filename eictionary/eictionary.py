@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import difflib
 
 def get_meaning(word):
     """Takes word and find all meanings of it and returns the list of all meanings
@@ -30,5 +31,11 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Please specify a word to find the meaning. \nUsage:\n $ python3 eictionary.py word") 
     else:
-        for meaning in get_meaning(sys.argv[1]):
-            print(meaning)
+        meanings = get_meaning(sys.argv[1])
+        if not meanings:
+            print("Word '{0}' not found, some similar words: ".format(sys.argv[1]))
+            for related in difflib.get_close_matches(sys.argv[1], get_list_of_words()):
+                print(related)
+        else:
+            for meaning in meanings:
+                print(meaning)
