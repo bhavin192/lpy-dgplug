@@ -17,15 +17,15 @@ def get_meaning(word):
                 list_of_meanings.append(split_line[2])
     return list_of_meanings
 
-def get_list_of_words():
-    """Gives list of words from the dictionary source file
-    :returns: list of all words from the file"""
+def get_set_of_words():
+    """Gives set of words from the dictionary source file
+    :returns: set of all words from the file"""
 
-    list_of_words = []
+    set_of_words = set()
     with open("dictionary.csv") as wordfile:
         for line in wordfile:
-            list_of_words.append(line.split(",")[0].strip('"'))
-    return list_of_words        
+            set_of_words.add(line.split(",")[0].strip('"'))
+    return set_of_words 
         
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         meanings = get_meaning(sys.argv[1])
         if not meanings:
             print("Word '{0}' not found, some similar words: ".format(sys.argv[1]))
-            for related in difflib.get_close_matches(sys.argv[1], get_list_of_words()):
+            for related in difflib.get_close_matches(sys.argv[1], get_set_of_words()):
                 print(related)
         else:
             for meaning in meanings:
