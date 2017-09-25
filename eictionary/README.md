@@ -8,6 +8,6 @@ Build a dictionary, where parse the words and there meaning from a file and writ
 
 - Run the script
     ```sh
-    $ python3 eictionary.py
+    $ python3 eictionary.py <word>
     ```
  
